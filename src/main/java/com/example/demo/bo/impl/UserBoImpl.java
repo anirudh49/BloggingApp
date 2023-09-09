@@ -1,5 +1,6 @@
 package com.example.demo.bo.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,27 +22,39 @@ public class UserBoImpl implements UserBO {
 	}
 
 	@Override
-	public UserDTO updateUser(UserDTO user, int userId) {
-		// TODO Auto-generated method stub
-		return null;
+	public UserDTO updateUser(UserDTO userDTO, int userId) {
+		User user = userDAO.findById(userId).get();
+		user.setId(userDTO.getId());
+		user.setName(userDTO.getName());
+		user.setEmail(userDTO.getEmail());
+		user.setPassword(userDTO.getPassword());
+		user.setAbout(userDTO.getAbout());
+		
+		userDAO.save(user);
+		return userDTO;
 	}
 
 	@Override
 	public UserDTO getUserById(int userId) {
-		// TODO Auto-generated method stub
-		return null;
+		User user = userDAO.findById(userId).get();
+		return userToDTO(user);
 	}
 
 	@Override
 	public List<UserDTO> getallUsers() {
-		// TODO Auto-generated method stub
-		return null;
+		List<User> users = new ArrayList<>();
+		List<UserDTO> dtos = new ArrayList<>();
+		users = userDAO.findAll();
+		for(int i=0;i<users.size();i++) {
+			dtos.add(userToDTO(users.get(i)));
+		}
+		return dtos;
 	}
 
 	@Override
-	public void deleteUser(int userId) {
-		// TODO Auto-generated method stub
-
+	public String deleteUser(int userId) {
+		userDAO.deleteById(userId);
+		return "Selected user has been deleted.";
 	}
 	
 	private User dtoToUser(UserDTO userdto) {

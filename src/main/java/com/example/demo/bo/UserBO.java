@@ -13,5 +13,5 @@ public interface UserBO {
 	UserDTO updateUser(UserDTO user, int userId);
 	UserDTO getUserById(int userId);
 	List<UserDTO> getallUsers();
-	void deleteUser(int userId);
+	String deleteUser(int userId);
 }
