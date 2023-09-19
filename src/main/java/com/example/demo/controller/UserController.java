@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.bo.UserBO;
+import com.example.demo.exception.UserNotFoundException;
 import com.example.demo.payload.UserDTO;
 
 @RestController
@@ -36,7 +37,7 @@ public class UserController {
 	
 	
 	@GetMapping("/findById/{userId}")
-	public UserDTO findById(@RequestParam("userId") Integer userId) {
+	public UserDTO findById(@RequestParam("userId") Integer userId) throws UserNotFoundException {
 		return userBO.getUserById(userId);
 	}
 	

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.entities.User;
 
-@Repository
+
 public interface UserDAO extends JpaRepository<User, Integer>{
 
 }
