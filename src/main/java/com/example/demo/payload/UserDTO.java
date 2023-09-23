@@ -1,11 +1,22 @@
 package com.example.demo.payload;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
+
 public class UserDTO {
 
 	private int id;
+	@NotEmpty
+	@Size(min = 3)
 	private String name;
+	@Email(message = "Email is not in proper format")
 	private String email;
+	@NotEmpty
+	@Size(min = 3, max = 8, message = "password length should be between 3 to 8")
 	private String password;
+	@NotEmpty
+	@Size(min = 3, max = 8, message = "about length should be between 3 to 8")
 	private String about;
 	public int getId() {
 		return id;

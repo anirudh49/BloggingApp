@@ -16,6 +16,8 @@ import com.example.demo.bo.UserBO;
 import com.example.demo.exception.UserNotFoundException;
 import com.example.demo.payload.UserDTO;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
@@ -26,12 +28,12 @@ public class UserController {
 	
 	
 	@PostMapping("/createUser")
-	public UserDTO createUser(@RequestBody UserDTO userDTO) {
+	public UserDTO createUser(@Valid @RequestBody UserDTO userDTO) {
 		return userBO.createUser(userDTO);
 	}
 	
 	@PutMapping("/updateUser/{userId}")
-	public UserDTO updateUser(@RequestBody UserDTO userDTO, @RequestParam("userId") Integer userId) {
+	public UserDTO updateUser(@Valid @RequestBody UserDTO userDTO, @RequestParam("userId") Integer userId) {
 		return userBO.updateUser(userDTO, userId);
 	}
 	
