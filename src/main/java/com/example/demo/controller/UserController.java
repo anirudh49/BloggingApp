@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,13 +34,13 @@ public class UserController {
 	}
 	
 	@PutMapping("/updateUser/{userId}")
-	public UserDTO updateUser(@Valid @RequestBody UserDTO userDTO, @RequestParam("userId") Integer userId) {
+	public UserDTO updateUser(@Valid @RequestBody UserDTO userDTO, @PathVariable("userId") Integer userId) {
 		return userBO.updateUser(userDTO, userId);
 	}
 	
 	
 	@GetMapping("/findById/{userId}")
-	public UserDTO findById(@RequestParam("userId") Integer userId) throws UserNotFoundException {
+	public UserDTO findById(@PathVariable("userId") Integer userId) throws UserNotFoundException {
 		return userBO.getUserById(userId);
 	}
 	

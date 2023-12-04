@@ -25,4 +25,12 @@ public class GlobalExceptionHandler{
 		return respStatus;
 		
 	}
+	
+	@ExceptionHandler(CategoryNotFoundException.class)
+	public RespStatus categoryNotFoundExceptionHandler(CategoryNotFoundException exception) {
+		RespStatus respStatus = new RespStatus();
+		respStatus.setStatus("Exception occured");
+		respStatus.setMessage("Category by this id doesn't exist.");
+		return respStatus;
+	}
 }
