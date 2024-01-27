@@ -33,4 +33,12 @@ public class GlobalExceptionHandler{
 		respStatus.setMessage("Category by this id doesn't exist.");
 		return respStatus;
 	}
+	
+	@ExceptionHandler(PostNotFoundException.class)
+	public RespStatus postNotFoundExceptionHandler(PostNotFoundException exception) {
+		RespStatus respStatus = new RespStatus();
+		respStatus.setStatus("Exception occured");
+		respStatus.setMessage("Post by this id doesn't exist.");
+		return respStatus;
+	}
 }

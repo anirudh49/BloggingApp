@@ -31,7 +31,7 @@ public class UserBoImpl implements UserBO {
 	@Override
 	public UserDTO updateUser(UserDTO userDTO, int userId) {
 		User user = userDAO.findById(userId).get();
-		user.setId(userDTO.getId());
+		user.setUser_id(userDTO.getId());
 		user.setName(userDTO.getName());
 		user.setEmail(userDTO.getEmail());
 		user.setPassword(userDTO.getPassword());

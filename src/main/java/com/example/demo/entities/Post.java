@@ -1,60 +1,43 @@
 package com.example.demo.entities;
 
+import java.util.Date;
+
+import org.hibernate.validator.constraints.Length;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Post {
 
 	@Id
-	private int id;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private int post_id;
+	@NotBlank
 	private String title;
+	@NotBlank
+	@Length(min = 4, max = 200)
 	private String content;
 	private String image;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
-
-	public Post(int id, String title, String content, String image) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.content = content;
-		this.image = image;
-	}
-
-	public Post() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
+	@ManyToOne
+	@JoinColumn(name = "category_id")
+	private Category category;
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+	private Date addedDate;
+	private byte[] imageData;
 }

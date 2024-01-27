@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,11 +47,13 @@ public class UserController {
 	
 	@GetMapping("/findAll")
 	public List<UserDTO> findAll(){
-		return userBO.getallUsers();
+		List<UserDTO> userDTOs = new ArrayList<>();
+		userDTOs = userBO.getallUsers();
+		return userDTOs;
 	}
 	
 	@DeleteMapping("/deleteUser/{userId}")
-	public String delete(@RequestParam("userId") Integer userId) {
+	public String delete(@PathVariable("userId") Integer userId) {
 		return userBO.deleteUser(userId);
 	}
 }

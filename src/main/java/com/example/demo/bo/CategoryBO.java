@@ -2,7 +2,6 @@ package com.example.demo.bo;
 
 import java.util.List;
 
-import com.example.demo.entities.Category;
 import com.example.demo.exception.CategoryNotFoundException;
 import com.example.demo.payload.CategoryDTO;
 
