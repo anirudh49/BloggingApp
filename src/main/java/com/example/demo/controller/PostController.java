@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.bo.PostBO;
-import com.example.demo.entities.Post;
 import com.example.demo.exception.PostNotFoundException;
 import com.example.demo.payload.FullPostDTO;
 import com.example.demo.payload.SimplifiedDTO;

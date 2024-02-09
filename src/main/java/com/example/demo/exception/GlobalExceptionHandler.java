@@ -41,4 +41,12 @@ public class GlobalExceptionHandler{
 		respStatus.setMessage("Post by this id doesn't exist.");
 		return respStatus;
 	}
+	
+	@ExceptionHandler(CommentNotFoundException.class)
+	public RespStatus commentNotFoundExceptionHandler(CommentNotFoundException exception) {
+		RespStatus respStatus = new RespStatus();
+		respStatus.setStatus("Exception occured");
+		respStatus.setMessage("Comment by this id doesn't exist.");
+		return respStatus;
+	}
 }

@@ -12,9 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.demo.bo.CategoryBO;
 import com.example.demo.bo.PostBO;
-import com.example.demo.bo.UserBO;
 import com.example.demo.dao.CategoryDAO;
 import com.example.demo.dao.PostDAO;
 import com.example.demo.dao.UserDAO;
