@@ -17,7 +17,9 @@ public class SimplifiedDTO {
 	private String image;
 	private CategoryDTO category;
 	private UserDTO user;
+	private CommentDTO comment;
 	private Date addedDate;
 	private int user_id;
 	private int category_id;
+	private int comment_id;
 }

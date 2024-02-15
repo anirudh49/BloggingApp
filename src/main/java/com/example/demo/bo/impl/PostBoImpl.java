@@ -40,19 +40,6 @@ public class PostBoImpl implements PostBO {
 	@Autowired
 	CategoryDAO categoryDAO;
 	
-//	@Override
-//	public PostDTO createPost(PostDTO postDTO, MultipartFile multipartFile) throws IOException {
-//		postDTO.setAddedDate(new Date());
-//		User user = userDAO.findById(postDTO.getUser_id()).get();
-//		Category category = categoryDAO.findById(postDTO.getCategory_id()).get();
-//		postDTO.setCategory(category);
-//		postDTO.setUser(user);
-//		Post post = dtoToEntity(postDTO);
-//		post = Post.builder()
-//				.imageData(multipartFile.getBytes()).build();
-//		return entityToDTO(post);
-//	}
-	
 	@Override
 	public FullPostDTO createPost(FullPostDTO postDTO, MultipartFile multipartFile) throws IOException {
 		postDTO.setAddedDate(new Date());
@@ -79,6 +66,8 @@ public class PostBoImpl implements PostBO {
 		postDAO.save(post);
 		return entityToDTO(post);
 	}
+	
+	
 
 	@Override
 	public FullPostDTO getPostImageById(int postId) throws PostNotFoundException {
@@ -151,6 +140,16 @@ public class PostBoImpl implements PostBO {
 	Category dtoToEntity(CategoryDTO categoryDTO) {
 		Category category = modelMapper.map(categoryDTO, Category.class);
 		return category;
+	}
+
+	@Override
+	public FullPostDTO updatePostImage(FullPostDTO postDTO, int postId, MultipartFile multipartFile) throws IOException {
+		Post post = postDAO.findById(postId).get();
+		Post updatedPost = Post.builder()
+							.imageData(multipartFile.getBytes()).build();
+		post.setImageData(updatedPost.getImageData());
+		postDAO.save(post);
+		return entityToDTO(post);
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +43,11 @@ public class UserController {
 	@GetMapping("/findById/{userId}")
 	public UserDTO findById(@PathVariable("userId") Integer userId) throws UserNotFoundException {
 		return userBO.getUserById(userId);
+	}
+	
+	@GetMapping("/findLoggedInUsername")
+	public String findLoggedInUsername(Principal principal) {
+		return principal.getName();
 	}
 	
 	@GetMapping("/findAll")

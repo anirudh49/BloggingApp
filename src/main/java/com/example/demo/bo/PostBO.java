@@ -16,6 +16,7 @@ public interface PostBO {
 	//PostDTO createPost(PostDTO postDTO) throws IOException;
 	//update
 	FullPostDTO updatePost(FullPostDTO postDTO, int postId, MultipartFile multipartFile);
+	FullPostDTO updatePostImage(FullPostDTO postDTO, int postId, MultipartFile multipartFile) throws IOException;
 	//getbyid
 	FullPostDTO getPostImageById(int postId) throws PostNotFoundException;
 	
